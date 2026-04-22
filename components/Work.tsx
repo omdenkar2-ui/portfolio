@@ -1,3 +1,5 @@
+import DemoReveal from "./DemoReveal";
+
 type Project = {
   id: string;
   status: "active" | "completed";
@@ -9,6 +11,7 @@ type Project = {
   details: string[];
   stack: string[];
   video?: string;
+  award?: string;
 };
 
 const projects: Project[] = [
@@ -62,17 +65,19 @@ const projects: Project[] = [
   {
     id: "watergator",
     status: "completed",
-    year: "2020 — 2021",
+    year: "2020 — 2022",
     role: "Builder, age 14",
     title: "Water Gator",
     summary:
-      "Miniature remote-operated lily-pad cleaning robot, built from a toy car during lockdown. Demoed at a national science exhibition.",
+      "Miniature remote-operated lily-pad cleaning robot, built from a toy car during lockdown. Top candidate at INSEF 2022 — the Indian Science & Engineering Fair — in its online prototype-video round.",
     details: [
       "Solved buoyancy, remote control, and pad collection with what was in the house.",
-      "Bathtub demo cleaned twigs in real time; earned a spot at the exhibition.",
+      "Submitted a prototype operation video to INSEF 2022 and placed among the top candidates nationally — did not win, but reached the final shortlist.",
+      "Bathtub demo cleaned twigs in real time; earliest lesson in shipping to a deadline.",
     ],
     stack: ["Mechanical", "RC electronics", "Improvisation"],
     video: "/water-gator.mp4",
+    award: "INSEF 2022 · Top Candidate",
   },
 ];
 
@@ -94,23 +99,13 @@ export default function Work() {
                   {p.status === "active" ? "● ACTIVE QUEST" : "✓ COMPLETED"}
                 </span>
                 <span className="brut-tag brut-tag--pale">{p.year}</span>
+                {p.award && <span className="brut-tag brut-tag--ink">★ {p.award}</span>}
               </div>
 
               <h3 className="quest-title">{p.title}</h3>
               <p className="quest-summary">{p.summary}</p>
 
-              {p.video && (
-                <div className="quest-video">
-                  <video
-                    src={p.video}
-                    controls
-                    preload="metadata"
-                    playsInline
-                    muted
-                  />
-                  <span className="quest-video-tag">▶ DEMO</span>
-                </div>
-              )}
+              {p.video && <DemoReveal src={p.video} />}
 
               <div className="quest-meta">
                 <span>

@@ -637,6 +637,54 @@ header.nav {
   pointer-events: none;
 }
 
+.demo-reveal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 20px;
+  border: 3px solid var(--line);
+  background: var(--card);
+  box-shadow: 4px 4px 0 var(--line);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  color: var(--ink);
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  text-align: left;
+}
+.demo-reveal:hover {
+  background: var(--sky);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--line);
+}
+.demo-reveal:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--line);
+}
+.demo-reveal__icon {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sky-deep);
+  color: var(--card);
+  border: 2px solid var(--line);
+  box-shadow: 2px 2px 0 var(--line);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.demo-reveal__label { flex: 1; }
+.demo-reveal__hint {
+  color: var(--mute);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
 /* ============================================================
    ACHIEVEMENTS
    ============================================================ */
