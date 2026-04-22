@@ -578,7 +578,10 @@ header.nav {
   color: #BFDBFE;
   text-shadow: 3px 3px 0 rgba(10, 26, 59, 0.85);
 }
-.gamertag-wrap .gamertag .accent { color: var(--sky-deep); }
+.gamertag-wrap .gamertag .accent {
+  color: var(--ink);
+  text-shadow: 3px 3px 0 rgba(191, 219, 254, 0.75);
+}
 .gamertag-stamp {
   position: absolute;
   top: 10px;
@@ -600,7 +603,10 @@ html.dark .gamertag-wrap .gamertag {
   color: #BFDBFE;
   text-shadow: 3px 3px 0 rgba(10, 22, 40, 0.9);
 }
-html.dark .gamertag-wrap .gamertag .accent { color: var(--sky-deep); }
+html.dark .gamertag-wrap .gamertag .accent {
+  color: #0A1A3B;
+  text-shadow: 3px 3px 0 rgba(191, 219, 254, 0.75);
+}
 
 /* ============================================================
    ACHIEVEMENTS · HEADER WITH MEDALS PHOTO
