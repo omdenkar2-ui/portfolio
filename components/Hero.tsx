@@ -14,9 +14,18 @@ export default function Hero() {
               <span className="brut-tag brut-tag--pale">Lonavla, IN</span>
             </div>
 
-            <h1 className="gamertag">
-              Om <span className="accent">Denkar.</span>
-            </h1>
+            <div className="gamertag-wrap">
+              <img
+                src="/photos/om-certs.jpg"
+                alt="Om Denkar as a child, holding Ryewood International School certificates of honour"
+                className="gamertag-bg"
+              />
+              <div className="gamertag-overlay" aria-hidden="true" />
+              <span className="gamertag-stamp" aria-hidden="true">RYEWOOD · 2016</span>
+              <h1 className="gamertag">
+                Om <span className="accent">Denkar.</span>
+              </h1>
+            </div>
 
             <TypedTagline />
 

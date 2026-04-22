@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import StatsStrip from "@/components/StatsStrip";
 import About from "@/components/About";
+import TrophiesBanner from "@/components/TrophiesBanner";
 import Work from "@/components/Work";
 import Achievements from "@/components/Achievements";
 import Education from "@/components/Education";
@@ -18,6 +19,7 @@ export default function Home() {
         <Hero />
         <StatsStrip />
         <About />
+        <TrophiesBanner />
         <Work />
         <Achievements />
         <Education />

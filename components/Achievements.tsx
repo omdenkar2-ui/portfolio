@@ -75,9 +75,21 @@ export default function Achievements() {
         </div>
         <h2 className="sec-title">Trophy case.</h2>
 
-        <div className="ach-total">
-          <span className="n">{total.toLocaleString()}</span>
-          <span className="l">Total · {items.length} unlocked</span>
+        <div className="ach-header">
+          <div className="ach-total">
+            <span className="n">{total.toLocaleString()}</span>
+            <span className="l">Total · {items.length} unlocked</span>
+          </div>
+          <div className="ach-medals">
+            <img
+              src="/photos/medals.png"
+              alt="Collection of 13+ olympiad medals: SOF NCO, NSO, IMO, IEO, IGKO, TERI GREEN"
+              loading="lazy"
+            />
+            <span className="ach-medals__caption">
+              13+ Medals · NCO · NSO · IMO · IEO · IGKO
+            </span>
+          </div>
         </div>
 
         <div className="ach-grid">

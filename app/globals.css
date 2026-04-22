@@ -530,41 +530,205 @@ header.nav {
   color: var(--mute);
 }
 
-/* ---- Photo card ---- */
-.ticker-photo {
-  padding: 0;
-  overflow: hidden;
-  background: var(--ink);
-}
-.ticker-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(1.05) contrast(1.02);
-}
-.ticker-photo__caption {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  padding: 4px 8px;
-  background: var(--card);
-  color: var(--ink);
-  border: 2px solid var(--line);
-  box-shadow: 2px 2px 0 var(--line);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 500;
-  max-width: calc(100% - 24px);
-}
-
 /* Narrower ticker items on small screens so they don't dominate the viewport */
 @media (max-width: 640px) {
   .ticker-item { width: 260px; height: 110px; }
   .ticker-card__title { font-size: 1rem; }
 }
+
+/* ============================================================
+   HERO · GAMERTAG PHOTO BACKDROP
+   ============================================================ */
+
+.gamertag-wrap {
+  position: relative;
+  isolation: isolate;
+  margin: 0 -4px 16px;
+  padding: 10px 16px 18px;
+  border: 2px solid var(--line);
+  background: var(--ink);
+  box-shadow: 4px 4px 0 var(--line);
+  overflow: hidden;
+}
+.gamertag-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  filter: grayscale(1) contrast(1.1) brightness(0.95);
+  z-index: 0;
+}
+.gamertag-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(30, 64, 175, 0.55) 0%,
+      rgba(96, 165, 250, 0.55) 100%
+    );
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+.gamertag-wrap .gamertag {
+  position: relative;
+  z-index: 2;
+  color: var(--card);
+  text-shadow: 3px 3px 0 rgba(10, 26, 59, 0.85);
+}
+.gamertag-wrap .gamertag .accent { color: var(--sky-pale); }
+.gamertag-stamp {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 3;
+  padding: 4px 10px;
+  background: var(--card);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  box-shadow: 2px 2px 0 var(--line);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+html.dark .gamertag-wrap .gamertag {
+  color: var(--paper);
+  text-shadow: 3px 3px 0 rgba(10, 22, 40, 0.9);
+}
+
+/* ============================================================
+   ACHIEVEMENTS · HEADER WITH MEDALS PHOTO
+   ============================================================ */
+
+.ach-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+@media (min-width: 700px) {
+  .ach-header {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 20px;
+  }
+}
+
+.ach-header .ach-total {
+  margin-bottom: 0;
+  align-self: flex-start;
+}
+@media (min-width: 700px) {
+  .ach-header .ach-total { align-self: stretch; display: inline-flex; align-items: center; }
+}
+
+.ach-medals {
+  position: relative;
+  flex: 1;
+  min-height: 120px;
+  border: 3px solid var(--line);
+  background: var(--ink);
+  box-shadow: 4px 4px 0 var(--line);
+  overflow: hidden;
+}
+.ach-medals img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  filter: saturate(1.1) contrast(1.05);
+}
+.ach-medals__caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  background: var(--card);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  max-width: calc(100% - 24px);
+}
+
+/* ============================================================
+   TROPHIES BANNER
+   ============================================================ */
+
+.trophies-banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-top: var(--border) solid var(--line);
+  border-bottom: var(--border) solid var(--line);
+  background: var(--ink);
+  overflow: hidden;
+}
+@media (min-width: 900px) { .trophies-banner { height: 280px; } }
+
+.trophies-banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  filter: saturate(1.05) contrast(1.05) brightness(0.95);
+}
+.trophies-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 26, 59, 0.55) 0%,
+      rgba(10, 26, 59, 0.15) 40%,
+      rgba(10, 26, 59, 0.0) 70%
+    );
+  z-index: 1;
+}
+.trophies-banner__caption {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 2;
+  padding: 8px 14px;
+  background: var(--card);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.trophies-banner__tagline {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--card);
+  text-shadow: 3px 3px 0 rgba(10, 26, 59, 0.7);
+  max-width: 60%;
+}
+.trophies-banner__tagline .display-italic { font-style: italic; }
 
 /* ============================================================
    ABOUT
