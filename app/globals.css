@@ -416,38 +416,154 @@ header.nav {
   border-top: var(--border) solid var(--line);
   border-bottom: var(--border) solid var(--line);
   background: var(--sky);
+  position: relative;
   overflow: hidden;
 }
-.stats-strip-inner {
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  padding: 0;
+
+.ticker {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 18px 0;
 }
-.stats-strip-item {
-  padding: 24px 32px;
-  border-right: 2px solid var(--line);
-  min-width: max-content;
+.ticker__track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  padding: 0 14px;
+  animation: ticker-scroll 55s linear infinite;
+  will-change: transform;
+}
+.ticker__dup { display: contents; }
+.ticker:hover .ticker__track { animation-play-state: paused; }
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker { overflow-x: auto; }
+  .ticker__track { animation: none; }
+  .ticker__dup { display: none; }
+}
+
+.ticker__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 64px;
+  pointer-events: none;
+  z-index: 3;
+}
+.ticker__fade--l {
+  left: 0;
+  background: linear-gradient(to right, var(--sky) 0%, rgba(96, 165, 250, 0) 100%);
+}
+.ticker__fade--r {
+  right: 0;
+  background: linear-gradient(to left, var(--sky) 0%, rgba(96, 165, 250, 0) 100%);
+}
+
+/* ---- Ticker items (shared) ---- */
+.ticker-item {
   flex-shrink: 0;
+  height: 120px;
+  width: 320px;
+  border: 3px solid var(--line);
+  background: var(--card);
+  box-shadow: 4px 4px 0 var(--line);
+  position: relative;
+}
+
+/* ---- Achievement card ---- */
+.ticker-card {
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  justify-content: space-between;
 }
-.stats-strip-item:last-child { border-right: none; }
-.stats-strip-item .v {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 2rem;
-  line-height: 1;
-  color: var(--ink);
+.ticker-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
-.stats-strip-item .k {
+.ticker-card__year {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--sky-pale);
+  border: 2px solid var(--line);
   font-family: var(--font-mono);
   font-size: 10px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
   color: var(--ink);
-  opacity: 0.8;
+  box-shadow: 2px 2px 0 var(--line);
+  font-weight: 500;
+}
+.ticker-card__rare {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--card);
+  background: var(--ink);
+  padding: 3px 8px;
+  border: 2px solid var(--line);
+  box-shadow: 2px 2px 0 var(--sky-deep);
+  font-weight: 500;
+}
+.ticker-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.ticker-card__hook {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--mute);
+}
+
+/* ---- Photo card ---- */
+.ticker-photo {
+  padding: 0;
+  overflow: hidden;
+  background: var(--ink);
+}
+.ticker-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.05) contrast(1.02);
+}
+.ticker-photo__caption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 8px;
+  background: var(--card);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  box-shadow: 2px 2px 0 var(--line);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  max-width: calc(100% - 24px);
+}
+
+/* Narrower ticker items on small screens so they don't dominate the viewport */
+@media (max-width: 640px) {
+  .ticker-item { width: 260px; height: 110px; }
+  .ticker-card__title { font-size: 1rem; }
 }
 
 /* ============================================================
